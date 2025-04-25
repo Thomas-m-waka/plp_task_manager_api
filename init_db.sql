@@ -1,0 +1,18 @@
+CREATE DATABASE IF NOT EXISTS taskdb;
+
+USE taskdb;
+
+CREATE TABLE users (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE
+);
+
+CREATE TABLE tasks (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(100) NOT NULL,
+    description TEXT,
+    completed BOOLEAN DEFAULT FALSE,
+    owner_id INT,
+    FOREIGN KEY (owner_id) REFERENCES users(id)
+);
